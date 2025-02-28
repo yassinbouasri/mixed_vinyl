@@ -21,8 +21,19 @@ class VinylController extends AbstractController
             ['song' => 'On Bended Knee', 'artist' => 'Boyz II Men'],
             ['song' => 'Fantasy', 'artist' => 'Mariah Carey'],
         ];
+        
         return $this->render('vinyl/home.html.twig',[
             'tracks' => $tracks,
+        ]);
+    }
+
+    #[Route('/browse/{slug}')]
+    public function browse($slug = null)
+    {
+        $genre = $slug ? \symfony\component\string\u(str_replace('-', ' ', $slug))->title() : null;
+
+        return $this->render('vinyl/browse.html.twig', [
+            'genre' => $genre
         ]);
     }
 }
