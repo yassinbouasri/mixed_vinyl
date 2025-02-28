@@ -6,12 +6,14 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Twig\Environment;
 
 class VinylController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function home()
+    public function home(Environment $twig): Response
     {
         $tracks = [
             ['song' => 'Gangsta\'s Paradise', 'artist' => 'Coolio'],
@@ -22,9 +24,11 @@ class VinylController extends AbstractController
             ['song' => 'Fantasy', 'artist' => 'Mariah Carey'],
         ];
         
-        return $this->render('vinyl/home.html.twig',[
+        $html = $twig->render('vinyl/home.html.twig',[
             'tracks' => $tracks,
         ]);
+
+        return new Response($html);
     }
 
     #[Route('/browse/{slug}', name: 'browse')]
