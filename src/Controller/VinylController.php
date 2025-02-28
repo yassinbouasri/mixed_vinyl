@@ -27,7 +27,7 @@ class VinylController extends AbstractController
         ]);
     }
 
-    #[Route('/browse/{slug}')]
+    #[Route('/browse/{slug}', name: 'browse')]
     public function browse($slug = null)
     {
         $genre = $slug ? \symfony\component\string\u(str_replace('-', ' ', $slug))->title() : null;

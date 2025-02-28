@@ -37,7 +37,7 @@
             {% for track in tracks %}
             <div class="song-list">
                 <div class="d-flex mb-3">
-                    <a href="#">
+                    <a href="{{ path('browse') }}">
                         <i class="fas fa-play me-3"></i>
                     </a>
                     <span class="song-details">{{ track.song }} - {{ track.artist }}</span>
