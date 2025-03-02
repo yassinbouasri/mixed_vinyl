@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Twig\Environment;
+use function symfony\component\string\u;
 
 class VinylController extends AbstractController
 {
@@ -34,7 +35,7 @@ class VinylController extends AbstractController
     #[Route('/browse/{slug}', name: 'browse')]
     public function browse($slug = null)
     {
-        $genre = $slug ? \symfony\component\string\u(str_replace('-', ' ', $slug))->title() : null;
+        $genre = $slug ? u(str_replace('-', ' ', $slug))->title() : null;
 
         return $this->render('vinyl/browse.html.twig', [
             'genre' => $genre

@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SongApiController extends AbstractController
 {
-    #[Route('/api/song/{id<\d+>}', methods: 'GET')]
+    #[Route('/api/song/{id<\d+>}', name: 'api_songs_get_one', methods: ['GET'])]
     public function getSong(int $id): Response
     {
         $song = [
